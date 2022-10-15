@@ -1,15 +1,19 @@
-import './App.css'
+import { BrowserRouter, Routes, Route } from 'react-router-dom'
+import { Home, ChatPage } from '../components/'
 import { io } from 'socket.io-client'
-const socket = io('http://localhost:3001')
+const socket = await io('http://localhost:3001')
 
-function App() {
+const App = () => {
   return (
-    <>
-      {console.log(socket)}
-      < div className="App" >
-        <h1>App</h1>
-      </div >
-    </>
+    <BrowserRouter>
+      <div>
+        {console.log(socket)}
+        <Routes>
+          <Route path='/' element={<Home socket={socket} />} />
+          <Route path='/chat' element={<ChatPage socket={socket} />} />
+        </Routes>
+      </div>
+    </BrowserRouter>
   )
 }
 
