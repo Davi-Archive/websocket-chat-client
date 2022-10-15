@@ -7,7 +7,7 @@ const Home = () => {
 
     const handleSubmit = (e) => {
         e.preventDefault();
-        localStorage.setItem('userName', userName);
+        localStorage.setItem('username', userName);
         navigate('/chat');
     };
     return (
