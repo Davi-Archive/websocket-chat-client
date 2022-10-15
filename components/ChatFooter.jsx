@@ -1,8 +1,17 @@
-import React,{useState} from 'react'
+import { useState, useEffect } from 'react'
 
 
 const ChatFooter = ({ socket }) => {
     const [message, setMessage] = useState('')
+
+
+    const handleTyping = () =>
+        socket.emit('typing', `${localStorage.getItem('username')} is typing`);
+
+    const handleStopTyping = async () => {
+       socket.emit('typing', '')
+    }
+
 
     const handleSendMessage = (e) => {
         e.preventDefault()
@@ -26,6 +35,8 @@ const ChatFooter = ({ socket }) => {
                     className="message"
                     value={message}
                     onChange={(e) => setMessage(e.target.value)}
+                    onKeyDown={handleTyping}
+                    onKeyUp={handleStopTyping}
                 />
                 <button className="sendBtn">SEND</button>
             </form>

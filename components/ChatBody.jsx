@@ -1,7 +1,6 @@
 import { useNavigate } from 'react-router-dom'
-import { useState } from 'react'
 
-const ChatBody = ({ messages }) => {
+const ChatBody = ({ typingStatus, messages, lastMessageRef }) => {
     const navigate = useNavigate()
 
     const handleLeaveChat = () => {
@@ -18,7 +17,7 @@ const ChatBody = ({ messages }) => {
                 </button>
             </header>
             {/*This shows messages sent from you*/}
-            <div className="message__container">
+            <div className="message__container" >
                 {messages.map((message) => {
                     if (message.name == localStorage.getItem('username')) {
                         return (
@@ -44,8 +43,9 @@ const ChatBody = ({ messages }) => {
                     }
                 })}
                 <div className="message__status">
-                    <p>Someone is typing...</p>
+                    <p>{typingStatus}</p>
                 </div>
+                <div ref={lastMessageRef} />
             </div>
         </>
     )
