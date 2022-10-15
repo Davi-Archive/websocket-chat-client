@@ -15,8 +15,6 @@ const ChatFooter = ({ socket }) => {
             })
         }
 
-
-        console.log({ username: localStorage.getItem('username'), message })
         setMessage('')
     }
     return (
