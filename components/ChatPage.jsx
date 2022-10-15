@@ -1,6 +1,14 @@
-const ChatPage = () => {
+import { ChatBar, ChatBody, ChatFooter } from './'
+
+const ChatPage = ({ socket }) => {
   return (
-    <div>ChatPage</div>
+    <div className="chat">
+      <ChatBar />
+      <div className='chat__main'>
+        <ChatBody />
+        <ChatFooter />
+      </div>
+    </div>
   )
 }
 

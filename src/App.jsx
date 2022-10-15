@@ -7,7 +7,6 @@ const App = () => {
   return (
     <BrowserRouter>
       <div>
-        {console.log(socket)}
         <Routes>
           <Route path='/' element={<Home socket={socket} />} />
           <Route path='/chat' element={<ChatPage socket={socket} />} />
